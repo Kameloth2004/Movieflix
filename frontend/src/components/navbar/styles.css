@@ -1,0 +1,19 @@
+.nav-container {
+    display: flex;
+    flex-direction: row;
+    height: 70px;
+    background-color: #FFC700;
+}
+
+.nav-container h2 {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    color: black;
+    margin-top: 18px;
+    margin-left: 18px;
+}
+
+.nav-container button {
+    display: none;
+}

@@ -1,8 +1,10 @@
-
+import 'bootstrap/dist/css/bootstrap.css';
+import './App.css';
+import Home from './pages/home';
 
 const App = () => {
   return (
-  <h1>Movie Fix Tarefa</h1>
+  <Home />
   );
 }
 
