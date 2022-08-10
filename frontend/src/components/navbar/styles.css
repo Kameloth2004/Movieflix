@@ -1,4 +1,5 @@
 .nav-container {
+    width: 100%;
     display: flex;
     flex-direction: row;
     height: 70px;
@@ -12,6 +13,11 @@
     color: black;
     margin-top: 18px;
     margin-left: 18px;
+    
+}
+
+.nav-logo-text {
+    text-decoration: none;
 }
 
 .nav-container button {

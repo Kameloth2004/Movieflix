@@ -1,10 +1,10 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
-import Home from './pages/home';
+import Routes from './Routes';
 
 const App = () => {
   return (
-  <Home />
+  <Routes />
   );
 }
 
