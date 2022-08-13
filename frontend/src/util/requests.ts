@@ -1,13 +1,25 @@
 import axios from 'axios';
 import qs from 'qs';
 
+type LoginResponse = {
+    
+        access_token: String;
+        token_type: String;
+        refresh_token: String;
+        expires_in: Number;
+        scope: String;
+        userName: String;
+        userId: Number;
+    
+}
+
 export const BASE_URL = 
 'https://movieflix-devsuperior.herokuapp.com';
 
 const CLIENT_ID = process.env.REACT_APP_CLIENT_ID ?? 'myclientid';
 const CLIENT_SECRET = process.env.REACT_APP_CLIENT_SECRET ?? 'myclientsecret';
 
- 
+const tokenKey = 'authData'; 
 
 type LoginData = {
     username: string;
@@ -33,3 +45,13 @@ export const requestBackendLogin = (loginData : LoginData ) => {
         headers,
     });
 };
+
+export const saveAuthData = (obj : LoginData) => {
+    localStorage.setItem(tokenKey, JSON.stringify(obj));
+}
+
+export const getAuthData = () => {
+    const str = localStorage.getItem(tokenKey) ?? '{}';
+    return JSON.parse(str) as LoginResponse;
+    
+}
