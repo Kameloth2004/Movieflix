@@ -1,34 +1,35 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../AuthContext";
 import history from "../../util/history";
-import { getTokenData, isAuthenticated, removeAuthData, TokenData } from "../../util/requests";
+import { getTokenData, isAuthenticated, removeAuthData } from "../../util/requests";
 import "./styles.css";
 
-type AuthData = {
-  authenticated: boolean;
-  tokenData?: TokenData;
-};
+
 
 const Navbar = () => {
-  const [authData, setAuthData] = useState<AuthData>({ authenticated: false });
+  
+  const { authContextData, setAuthContextData } = useContext(AuthContext);
+  
+  
 
   useEffect(() => {
     if (isAuthenticated()) {
-      setAuthData({
+      setAuthContextData({
         authenticated: true,
         tokenData: getTokenData(),
       });
     } else {
-      setAuthData({
+      setAuthContextData({
         authenticated: false,
       });
     }
-  }, []);
+  }, [setAuthContextData]);
 
   const handleClick = (event:React.MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault();
     removeAuthData();
-    setAuthData({
+    setAuthContextData({
       authenticated: false,
     });
 
@@ -42,7 +43,7 @@ const Navbar = () => {
         <h2>Movie Flix</h2>
       </Link>
       <div>
-      {authData.authenticated && (
+      {authContextData.authenticated && (
       
       
       <a href="#logout" onClick={handleClick} className="btn-logout">SAIR</a>
