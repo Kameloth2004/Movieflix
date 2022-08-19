@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useHistory } from "react-router-dom";
 import { getAuthData, requestBackendLogin, saveAuthData } from "../../util/requests";
 import "./styles.css";
 
@@ -11,7 +12,8 @@ type FormData = {
 const Login = () => {
   const [hasError, setHasError] = useState(false);
 
-  
+  const history = useHistory();
+
   const { register, handleSubmit, formState: {errors} } = useForm<FormData>();
 
   const onSubmit = (formData: FormData) => {
@@ -22,6 +24,7 @@ const Login = () => {
         console.log('TOKEN gerado: ' + token);
         setHasError(false);
         console.log("SUCESSO", Response);
+        history.push('/movie');
       })
       .catch((error) => {
         setHasError(true);

@@ -1,21 +1,22 @@
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { Router, Switch, Route } from "react-router-dom";
 import Navbar from "./components/navbar";
 import Home from "./pages/home";
 import Movies from "./pages/Movies";
+import history from "./util/history";
 
 const Routes = () => {
   return (
-    <BrowserRouter>
+    <Router history={history}>
       <Navbar />
       <Switch>
         <Route path="/" exact>
           <Home />
         </Route>
-        <Route path="/movies">
+        <Route path="/movie">
           <Movies />
         </Route>
       </Switch>
-    </BrowserRouter>
+    </Router>
   );
 };
 
