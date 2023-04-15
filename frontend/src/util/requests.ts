@@ -2,24 +2,9 @@ import axios, { AxiosRequestConfig } from 'axios'
 import history from './history'
 import qs from 'qs'
 import jwtDecode from 'jwt-decode'
-
-type Role = 'ROLE_VISITOR' | 'ROLE_MEMBER'
-
-export type TokenData = {
-  exp: number
-  user_name: string
-  authorities: Role[]
-};
-
-type LoginResponse = {
-  access_token: String
-  token_type: String
-  refresh_token: String
-  expires_in: Number
-  scope: String
-  userName: String
-  userId: Number
-};
+import { LoginResponse } from '../types/loginresponse'
+import { TokenData } from '../types/tokendata'
+import { LoginData } from '../types/logindata'
 
 export const BASE_URL = 'https://movieflix-devsuperior.herokuapp.com'
 
@@ -28,10 +13,7 @@ const CLIENT_SECRET = process.env.REACT_APP_CLIENT_SECRET ?? 'myclientsecret'
 
 const tokenKey = 'authData'
 
-type LoginData = {
-  username: string
-  password: string
-}
+
 
 export const requestBackendLogin = (loginData: LoginData) => {
   const headers = {
@@ -54,20 +36,27 @@ export const requestBackendLogin = (loginData: LoginData) => {
 }
 
 export const requestBackend = (config: AxiosRequestConfig) => {
-  return axios(config)
-}
+  const headers = config.withCredentials
+    ? {
+        ...config.headers,
+        Authorization: 'Bearer ' + getAuthData().access_token,
+      }
+    : config.headers;
+
+  return axios({ ...config, baseURL: BASE_URL, headers });
+};
 
 export const saveAuthData = (obj: LoginResponse) => {
   localStorage.setItem(tokenKey, JSON.stringify(obj))
 }
 
 export const getAuthData = () => {
-  const str = localStorage.getItem(tokenKey) ?? '{}';
-  return JSON.parse(str) as LoginResponse;
+  const str = localStorage.getItem(tokenKey) ?? '{}'
+  return JSON.parse(str) as LoginResponse
 }
 
 export const removeAuthData = () => {
-  localStorage.removeItem(tokenKey);
+  localStorage.removeItem(tokenKey)
 }
 
 // Add a request interceptor
@@ -96,14 +85,14 @@ axios.interceptors.response.use(
 
 export const getTokenData = (): TokenData | undefined => {
   try {
-    return jwtDecode(getAuthData().access_token) as TokenData;
+    return jwtDecode(getAuthData().access_token) as TokenData
   } catch (error) {
-    return undefined;
+    return undefined
   }
 }
 
-export const isAuthenticated = () : boolean => {
-  const tokenData = getTokenData();
+export const isAuthenticated = (): boolean => {
+  const tokenData = getTokenData()
 
-  return (tokenData && tokenData.exp * 1000 > Date.now()) ? true : false;
+  return tokenData && tokenData.exp * 1000 > Date.now() ? true : false
 }

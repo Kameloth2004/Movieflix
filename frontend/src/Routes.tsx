@@ -1,8 +1,10 @@
 import { Router, Switch, Route } from "react-router-dom";
 import Navbar from "./components/navbar";
+import PrivateRoute from "./components/PrivateRoute";
 import Home from "./pages/home";
 import Movies from "./pages/Movies";
 import history from "./util/history";
+
 
 const Routes = () => {
   return (
@@ -12,9 +14,9 @@ const Routes = () => {
         <Route path="/" exact>
           <Home />
         </Route>
-        <Route path="/movie">
+        <PrivateRoute path="/movie">
           <Movies />
-        </Route>
+        </PrivateRoute>
       </Switch>
     </Router>
   );

@@ -33,7 +33,7 @@ const Login = () => {
           authenticated: true,
           tokenData: getTokenData(),
         })
-        history.push("/movie");
+        history.replace("/movie");
       })
       .catch((error) => {
         setHasError(true);
