@@ -11,7 +11,7 @@ const PrivateRoute = ({ children, path }: Props) => {
   return (
     <Route
       path={path}
-      render={() =>
+      render={({ location }) =>
         isAuthenticated() ? <>{children}</> : <Redirect to="/" />
       }
     />

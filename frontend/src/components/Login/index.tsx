@@ -12,7 +12,7 @@ type FormData = {
 
 const Login = () => {
 
-  const { authContextData, setAuthContextData } = useContext(AuthContext);
+  const { setAuthContextData } = useContext(AuthContext);
   const [hasError, setHasError] = useState(false);
 
   const history = useHistory();
@@ -33,7 +33,7 @@ const Login = () => {
           authenticated: true,
           tokenData: getTokenData(),
         })
-        history.replace("/movie");
+        history.replace("/movies");
       })
       .catch((error) => {
         setHasError(true);

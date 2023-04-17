@@ -4,6 +4,8 @@ import PrivateRoute from "./components/PrivateRoute";
 import Home from "./pages/home";
 import Movies from "./pages/Movies";
 import history from "./util/history";
+import Reviews from "./pages/Reviews";
+
 
 
 const Routes = () => {
@@ -14,8 +16,13 @@ const Routes = () => {
         <Route path="/" exact>
           <Home />
         </Route>
-        <PrivateRoute path="/movie">
-          <Movies />
+        <PrivateRoute path="/movies">
+        <Route path="/movies" exact>
+          <Movies/>
+        </Route>
+        <Route path="/movies/:movieId">
+          <Reviews />
+        </Route>
         </PrivateRoute>
       </Switch>
     </Router>
