@@ -1,22 +1,19 @@
-import { AxiosRequestConfig } from 'axios';
-import ReviewForm from '../../components/ReviewForm';
-import ReviewListing from '../../components/ReviewListing';
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { Review } from '../../types/review';
-import { requestBackend } from '../../util/requests';
+import { AxiosRequestConfig } from "axios";
+import ReviewForm from "../../components/ReviewForm";
+import ReviewListing from "../../components/ReviewListing";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { Review } from "../../types/review";
+import { requestBackend } from "../../util/requests";
 
-import { useContext } from 'react';
-import { AuthContext } from '../../AuthContext';
+import { useContext } from "react";
+import { AuthContext } from "../../AuthContext";
 
-import './styles.css';
+import "./styles.css";
 
 type urlParams = {
   movieId: string;
 };
-
-
-
 
 const Reviews = () => {
   const { movieId } = useParams<urlParams>();
@@ -24,13 +21,14 @@ const Reviews = () => {
   const [reviews, setReviews] = useState<Review[]>([]);
 
   const { authContextData } = useContext(AuthContext);
-const isMember = authContextData.tokenData?.authorities.includes('ROLE_MEMBER');
+  const isMember =
+    authContextData.tokenData?.authorities.includes("ROLE_MEMBER");
 
   console.log(movieId);
 
   useEffect(() => {
     const config: AxiosRequestConfig = {
-      method: 'GET',
+      method: "GET",
       url: `/movies/${movieId}/reviews/`,
       withCredentials: true,
     };

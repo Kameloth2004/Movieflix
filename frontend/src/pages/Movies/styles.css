@@ -1,0 +1,30 @@
+.movie-card {
+    width: 320px;
+    height: 100px;
+    left: 0px;
+    top: 68px;
+    background: #525252;
+    padding: 10px;
+    font-size: 16px;
+    left: 10px;
+  }
+  .movie-card h1 {
+    display: flex;
+    margin-left: 15px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 33px;
+    text-align: center;
+    letter-spacing: -0.015em;
+    color: #ffffff;
+    margin-top: 25px;
+  }
+  
+     
+  @media (min-width: 576px) {
+    .movie-card h1 {
+      margin-left: 25px;
+    }
+  }
+   

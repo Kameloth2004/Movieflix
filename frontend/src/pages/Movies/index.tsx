@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { requestBackend } from "../../util/requests";
 import { AxiosRequestConfig } from "axios";
 import MovieCatalog from "../../components/moviecatalog";
-
+import './styles.css';
 
 
 const Movies = () => {
