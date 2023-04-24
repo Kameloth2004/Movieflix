@@ -1,3 +1,5 @@
+import { Genero } from "./genero";
+
 export type MovieData = {
     id: number;
     title: string;
@@ -5,5 +7,6 @@ export type MovieData = {
     year: number;
     imgUrl: string;
     synopsis: string;
+    genre: Genero [];
     
 }
