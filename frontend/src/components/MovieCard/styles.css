@@ -1,16 +1,31 @@
-.dsmovie-card{
+.dsmovie-card {
+   
+  text-align: center;
+  background-color: rgb(113, 112, 112);
+  padding: 20px 0;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  border: 1px solid red;
+}
+
+.dsmovie-card-container img{
     width: 100%;
-    height: 330px;
-    background-color: rgb(113, 112, 112);
-    padding: 20px 0;
-    margin-bottom: 20px;
-    border-radius: 10px;
+
 }
 
-.dsmovie-movie-card-image{
-    width: 300px;
+.dsmovie-card-bottom-container {
+  margin: 10px;
+  text-align: left;
 }
 
-.dsmovie-card-bottom-container{
-    margin: 10px;
+
+@media (min-width: 576px) {
+    .dsmovie-card{
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+  
+    .dsmovie-card-container img {
+    width: 260px;
+  }
 }

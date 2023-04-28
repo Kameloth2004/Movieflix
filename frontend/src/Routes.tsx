@@ -5,8 +5,7 @@ import Home from "./pages/home";
 import Movies from "./pages/Movies";
 import history from "./util/history";
 import Reviews from "./pages/Reviews";
-
-
+import MovieDetails from "./pages/MovieDetails";
 
 const Routes = () => {
   return (
@@ -17,12 +16,15 @@ const Routes = () => {
           <Home />
         </Route>
         <PrivateRoute path="/movies">
-        <Route path="/movies" exact>
-          <Movies/>
-        </Route>
-        <Route path="/movies/:movieId">
-          <Reviews />
-        </Route>
+          <Route path="/movies" exact>
+            <Movies />
+          </Route>
+          <Route path="/movies/:movieId/details" exact>
+            <MovieDetails />
+          </Route>
+          <Route path="/movies/:movieId">
+            <Reviews />
+          </Route>
         </PrivateRoute>
       </Switch>
     </Router>

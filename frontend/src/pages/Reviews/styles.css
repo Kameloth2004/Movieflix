@@ -49,6 +49,10 @@
     left: 0px;
     top: 0px;
   }
+
+  .hidden {
+    display: none;
+  }
   
   @media (min-width: 576px) {
     .detalhe h1 {

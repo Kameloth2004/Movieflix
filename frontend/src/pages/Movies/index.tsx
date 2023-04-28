@@ -6,13 +6,19 @@ import { requestBackend } from "../../util/requests";
 import { AxiosRequestConfig } from "axios";
 import MovieCard from "../../components/MovieCard";
 import { Genero } from "../../types/genero";
-import "./styles.css";
 import Pagination from "../../components/Pagination";
+import Select from "react-select";
+
 
 const Movies = () => {
   const [page, setPage] = useState<SpringPage<MovieData>>();
-  const [categoria, setCategoria] = useState<Number | undefined>();
+  const [categoria, setCategoria] = useState<Number[] | undefined>();
   const [categorias, setCategorias] = useState<Genero[]>([]);
+
+  const options = categorias.map((categoria) => ({
+    value: categoria.id,
+    label: categoria.name,
+  }));
 
   useEffect(() => {
     const params: AxiosRequestConfig = {
@@ -39,6 +45,7 @@ const Movies = () => {
       requestBackend(params)
         .then((response) => {
           setPage(response.data);
+          console.log(response.data);
         })
         .finally(() => {});
     }
@@ -48,18 +55,21 @@ const Movies = () => {
     <>
       <div>
         <div className="movie-card">
-          <select
-            id="categorias"
-            name="categorias"
-            onChange={(evento) => setCategoria(Number(evento.target.value))}
-          >
-            <option></option>
-            {categorias.map((categoria) => (
-              <option key={categoria.id} value={categoria.id}>
-                {categoria.name}
-              </option>
-            ))}
-          </select>
+          <Select
+            isMulti
+            options={options}
+            onChange={(selectedOptions) => {
+              if (selectedOptions) {
+                const selectedValues = selectedOptions.map(
+                  (option: any) => option.value
+                );
+                setCategoria(selectedValues);
+              } else {
+                setCategoria(undefined);
+              }
+            }}
+          />
+          ;
         </div>
 
         {categoria && (

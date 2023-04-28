@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Review } from "../../types/review";
 import { requestBackend } from "../../util/requests";
-
+import MovieDetails from "../MovieDetails";
 import { useContext } from "react";
 import { AuthContext } from "../../AuthContext";
 
@@ -45,12 +45,12 @@ const Reviews = () => {
 
   return (
     <div className="detalhe">
-      <h1> Tela detalhes do filme id:{movieId} </h1>
-      <div className="reviewform">
+      <MovieDetails />
+      <>
         {isMember && (
           <ReviewForm movieId={movieId} onIsertReview={handleIsertReview} />
         )}
-      </div>
+      </>
       <div className="listing">
         <ReviewListing reviews={reviews} />
       </div>
