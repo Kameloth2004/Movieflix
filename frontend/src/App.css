@@ -11,9 +11,24 @@ body {
 
 html, body {
   background-color: #525252;
+  margin: 0;
+  padding: 0;
+}
+
+ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
 a, a:hover {
   color: unset;
   text-decoration: none;
+}
+
+.dsmovie-card {
+  background-color: rgb(113, 112, 112);
+  margin: 20px 0;
+  border-radius: 4px;
+  height: auto;
 }

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { requestBackend } from "../../util/requests";
 import { AxiosRequestConfig } from "axios";
 import { MovieData } from "../../types/moviedata";
+import "./styles.css";
 
 type UrlParams = {
   movieId: string;
@@ -30,22 +31,33 @@ const MovieDetails = () => {
   }, [movieId]);
 
   return (
-    <div>
-      {movie ? (
-        <div className="movie-details-container">
-          <img src={movie.imgUrl} alt={movie.title} />
-          <h1>{movie.title}</h1>
-          <p>Ano: {movie.year}</p>
-          <h2>{movie.subTitle}</h2>
-          <div className="movie-synopsis">
-            <p>{movie.synopsis}</p>
+    <div className="movie-container">
+      <div className="movie-details-container">
+        {movie ? (
+          <div className="movie-details">
+            <div className="movie-card">
+              <div className="movie-card-image">
+                <img src={movie.imgUrl} alt={movie.title} />
+              </div>
+              <div className="movie-info-container">
+                <div className="movie-info">
+                  <h1>{movie.title}</h1>
+                  <p>Ano: {movie.year}</p>
+                  <h2>{movie.subTitle}</h2>
+                </div>
+              
+
+              <div className="movie-synopsis">
+                <span>{movie.synopsis}</span>
+              </div>
+              </div>
+            </div>
           </div>
-        </div>
-      ) : (
-        <p>Carregando...</p>
-      )}
+        ) : (
+          <p>Carregando...</p>
+        )}
+      </div>
     </div>
   );
 };
-
 export default MovieDetails;

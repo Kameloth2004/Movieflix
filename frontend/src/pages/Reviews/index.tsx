@@ -46,6 +46,7 @@ const Reviews = () => {
   return (
     <div className="detalhe">
       <MovieDetails />
+
       <>
         {isMember && (
           <ReviewForm movieId={movieId} onIsertReview={handleIsertReview} />

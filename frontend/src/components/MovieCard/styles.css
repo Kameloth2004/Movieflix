@@ -1,16 +1,25 @@
 .dsmovie-card {
-   
-  text-align: center;
   background-color: rgb(113, 112, 112);
-  padding: 20px 0;
-  margin-bottom: 20px;
-  border-radius: 10px;
-  border: 1px solid red;
+  margin: 20px 0;
+  border-radius: 4px;
+  height: auto;
 }
 
-.dsmovie-card-container img{
-    width: 100%;
+.dsmovie-card-container img {
+  width: 100%;
+  margin-top: 26px;
+}
 
+.dsmovie-card-bottom-container h3 {
+  font-size: 20px;
+}
+
+.dsmovie-card-bottom-container h4 {
+  font-size: 16px;
+}
+
+.dsmovie-card-bottom-container p {
+  font-size: 12px;
 }
 
 .dsmovie-card-bottom-container {
@@ -18,14 +27,8 @@
   text-align: left;
 }
 
-
 @media (min-width: 576px) {
-    .dsmovie-card{
-        margin-left: 20px;
-        margin-right: 20px;
-    }
-  
-    .dsmovie-card-container img {
-    width: 260px;
+  .dsmovie-card {
+    height: 360px;
   }
 }

@@ -8,6 +8,8 @@ type Props = {
 function MovieCard({ movie }: Props) {
   console.log(movie);
   return (
+    <div>
+  
     <div className="dsmovie-card">
       <div className="dsmovie-card-container">
         <img className="dsmovie-movie-card-image" src={movie.imgUrl} alt="" />
@@ -18,6 +20,8 @@ function MovieCard({ movie }: Props) {
         <p className="dsmovie-card-subTitle text-white">{movie.subTitle}</p>
       </div>
     </div>
+  </div>
+
   );
 }
 
