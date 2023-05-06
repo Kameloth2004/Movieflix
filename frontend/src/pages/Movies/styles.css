@@ -24,6 +24,7 @@
 .category-select__control:focus-within {
   border-color: #e1e1e1 !important;
   box-shadow: 0 0 0 1px #e1e1e1 !important;
+  
 }
 
 .category-select__placeholder {
@@ -36,7 +37,9 @@
 
 .category-select__option {
   color: white !important;
+  
 }
+
 
 .category-select__multi-value {
   background-color: #6c6c6c !important;
@@ -45,4 +48,5 @@
 
 .category-select__multi-value__label {
   color: white !important;
+  
 }

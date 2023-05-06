@@ -88,7 +88,7 @@ const Login = () => {
             </div>
           </div>
 
-          <button className="btn">Fazer Login</button>
+          <button className="btn btn-custom">Fazer Login</button>
         </form>
       </div>
     </>

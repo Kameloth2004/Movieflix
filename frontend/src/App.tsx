@@ -1,8 +1,13 @@
-import "bootstrap/dist/css/bootstrap.css";
-import { useState } from "react";
-import "./App.css";
 import { AuthContext, AuthContextData } from "./AuthContext";
+import { useState } from "react";
+import { ToastContainer } from "react-toastify";
 import Routes from "./Routes";
+
+import "bootstrap/dist/css/bootstrap.css";
+import "./App.css";
+import "react-toastify/dist/ReactToastify.css";
+
+
 
 const App = () => {
   const [authContextData, setAuthContextData] = useState<AuthContextData>({
@@ -12,6 +17,7 @@ const App = () => {
   return (
   <AuthContext.Provider value={{authContextData, setAuthContextData}}>
     <Routes />
+    <ToastContainer />
   </AuthContext.Provider>
   );
 

@@ -11,6 +11,13 @@ import Select from "react-select";
 
 import "./styles.css";
 
+// Optei por deixar o componente chamar todos os filmes do backend no caso do usuário fechar a categoria escolhida, pois assim
+// é possível vermos a paginação em modo funcional
+// Também deixei um botão de voltar, sem a preocupação de alinhamento com o botão sair, a partir do breakpoint de 576px para 
+// facilitar a análise da programação, já que após realizar uma avalição só havia a opção SAIR. O breakpoint de 576px é para
+// Não quebrar o NavBar em 320px, mas este botão futuramente poderá ser configurado normalmente com o botão SAIR.
+
+
 const Movies = () => {
   const [page, setPage] = useState<SpringPage<MovieData>>();
   const [categoria, setCategoria] = useState<Number[] | undefined>();
@@ -24,7 +31,7 @@ const Movies = () => {
 
   const handlePageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber);
-    // Chame a função para buscar os dados da API aqui
+    
   };
 
   useEffect(() => {
@@ -87,7 +94,7 @@ const Movies = () => {
               }
             }}
           />
-          ;
+          
         </div>
 
         {categoria && (

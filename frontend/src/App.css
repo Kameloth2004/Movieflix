@@ -26,6 +26,11 @@ a, a:hover {
   text-decoration: none;
 }
 
+.btn-custom{
+  background-color: #ffc700 ;
+  border: 1px solid black;
+}
+
 .dsmovie-card {
   background-color: rgb(113, 112, 112);
   margin: 20px 0;
